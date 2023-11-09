@@ -1,41 +1,27 @@
 version: '3'
 
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
-    environment:
-      - node.name=elasticsearch
-      - cluster.name=es-docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - discovery.type=single-node
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
+  grafana:
+    env_file:
+      - .env
+    image: grafana/grafana
+    ports:
+      - "${GRAFANA_PORT}:3000"
+    container_name: ${GRAFANA_SERVICE_NAME}
     volumes:
-      - esdata:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.15.0
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    ports:
-      - "5601:5601"
+      - grafana-data:/var/lib/grafana
     depends_on:
-      - elasticsearch
+      - loki
 
-  apm-server:
-    image: docker.elastic.co/apm/apm-server:7.15.0
-    depends_on:
-      - elasticsearch
-    command: apm-server -e
+  loki:
+    env_file:
+      - .env
+    image: grafana/loki:latest
     ports:
-      - "8200:8200"
-    environment:
-      - output.elasticsearch.hosts=elasticsearch:9200
+      - "${LOKI_PORT}:3100"
+    volumes:
+      - loki-data:/loki
 
 volumes:
-  esdata:
+  grafana-data:
+  loki-data:
