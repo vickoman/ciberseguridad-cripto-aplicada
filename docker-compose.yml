@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+  api:
+    build: ./api/.
+    ports:
+      - "${API_PORT}:8080"
+    volumes:
+      - ./api/:/home/app
+    container_name: ${API_SERVICE_NAME}
+    depends_on:
+      - grafana
+      - loki
+
   grafana:
     env_file:
       - .env
@@ -21,6 +32,9 @@ services:
       - "${LOKI_PORT}:3100"
     volumes:
       - loki-data:/loki
+      - ./loki-config.yml:/etc/loki/loki-config.yml
+    command: -config.file=/etc/loki/loki-config.yml
+    container_name: ${LOKI_SERVICE_NAME}
 
 volumes:
   grafana-data:

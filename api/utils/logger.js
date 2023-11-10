@@ -11,7 +11,7 @@ logger.add(
 // Add loki
 logger.add(
     new LokiTransport({
-        host: "http://127.0.0.1:3100",
+        host: "http://loki:3100",
         labels: { job: 'api-app' },
         json: true
     })

@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "nombres": "Victor Manuel",
+    "apellidos": "Diaz De La Gasca",
+    "bio": "DevOps Engineer en number8",
+    "edad": 37
+  },
+  {
+    "id": 2,
+    "nombres": "Pablo",
+    "apellidos": "De La Gasca",
+    "bio": "bio descripcion #3",
+    "edad": 28
+  },
+  {
+    "id": 3,
+    "nombres": "Alejandro",
+    "apellidos": "Diaz",
+    "bio": "bio descripcion #3",
+    "edad": 12
+  },
+  {
+    "id": 4,
+    "nombres": "Camila",
+    "apellidos": "Diaz",
+    "bio": "bio descripcion #4",
+    "edad": 22
+  },
+  {
+    "id": 5,
+    "nombres": "Lili",
+    "apellidos": "Mazzini",
+    "bio": "bio descripcion #5",
+    "edad": 50
+  },
+  {
+    "id": 6,
+    "nombres": "Test name",
+    "apellidos": "Test lastname",
+    "bio": "Bio #6",
+    "edad": 44
+  },
+  {
+    "id": 7,
+    "nombres": "Robin ",
+    "apellidos": "Cordova",
+    "bio": "Bio #7",
+    "edad": 27
+  }
+]

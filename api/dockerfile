@@ -1,0 +1,15 @@
+FROM node:18.16-alpine
+LABEL maintainer="Group #8 - Encriptacion aplicada"
+LABEL version="1.0.0"
+
+WORKDIR /home/app
+ENV PORT 8080
+EXPOSE 8080
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+USER node
+
+CMD ["npm", "start"]
